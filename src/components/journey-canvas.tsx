@@ -1,11 +1,9 @@
-"use client"
-
 import { useRef, useMemo, useEffect } from "react"
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { Float, OrbitControls } from "@react-three/drei"
 import * as THREE from "three"
 import { GATE_SPACING, TOTAL_STEPS } from "../lib/questions"
-import { getFogDensity, getSaturation } from "../lib/game-store"
+import { getSaturation } from "../lib/game-store"
 
 // ---------- Road spiral math ----------
 const CURVE_AMPLITUDE = 8
@@ -301,7 +299,11 @@ function Particles({ currentStep }: { currentStep: number }) {
   return (
     <points ref={pointsRef}>
       <bufferGeometry>
-        <bufferAttribute attach="attributes-position" array={positions} count={count} itemSize={3}/>
+        <bufferAttribute
+          attach="attributes-position"
+          count={count}
+          args={[positions, 3]}
+        />
       </bufferGeometry>
       <pointsMaterial size={0.12} color={new THREE.Color(0.4 + sat * 0.6, 0.15 + sat * 0.5, 0.5 + sat * 0.3)} transparent opacity={0.75} sizeAttenuation />
     </points>
