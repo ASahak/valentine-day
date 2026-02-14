@@ -24,7 +24,7 @@ export const QUESTIONS: Question[] = [
   {
     id: 2,
     question: "On what date did we first meet each other?",
-    answer: "14/02/2018",
+    answer: "14/02/2019",
     options: ["14/02/2017", "14/02/2018", "14/02/2019", "01/01/2018"],
     type: "select",
     hintType: "text",
